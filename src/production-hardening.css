@@ -1,0 +1,33 @@
+/* Production accessibility and interaction hardening. */
+:where(a, button):focus-visible {
+  outline: 3px solid rgba(82, 201, 255, .95);
+  outline-offset: 4px;
+  border-radius: 6px;
+}
+
+:where(a, button) {
+  -webkit-tap-highlight-color: rgba(53, 185, 234, .18);
+}
+
+@media (max-width: 760px) {
+  .nav a,
+  .menu-button,
+  .button {
+    min-height: 44px;
+  }
+}
+
+@media (prefers-contrast: more) {
+  :root {
+    --brand-line: rgba(110, 211, 255, .48);
+  }
+
+  .nav a,
+  .hero-lede,
+  .detail-dek,
+  .section-heading > p,
+  .detail-sections p,
+  footer p {
+    color: #c9d9e7;
+  }
+}
