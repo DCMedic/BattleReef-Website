@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import { SitePage } from './SitePages.jsx'
+import AuthorityPortal from './AuthorityPortal.jsx'
 import './production-hardening.js'
 import './styles.css'
 import './expansion.css'
@@ -10,6 +11,7 @@ import './visual-hotfix.css'
 import './brand-assets-v2.css'
 import './pages.css'
 import './production-hardening.css'
+import './authority.css'
 
 function HomeNavigationUpgrade() {
   React.useEffect(() => {
@@ -33,8 +35,12 @@ function HomeNavigationUpgrade() {
   return null
 }
 
+function EnhancedSitePage({ path }) {
+  return <><SitePage path={path}/><AuthorityPortal path={path}/></>
+}
+
 const rawPath = window.location.pathname.replace(/\/+$/, '') || '/'
-const content = rawPath === '/' ? <><App /><HomeNavigationUpgrade /></> : <SitePage path={rawPath} />
+const content = rawPath === '/' ? <><App /><HomeNavigationUpgrade /></> : <EnhancedSitePage path={rawPath} />
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>{content}</React.StrictMode>,
