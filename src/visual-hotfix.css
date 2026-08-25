@@ -1,32 +1,66 @@
-/* Makes the supplied original BattleReef artwork visibly present above the fold. */
+/* Reliable above-the-fold BattleReef branding with graceful fallback. */
 .brand-legacy {
   width: 210px;
   height: 56px;
-  background: url('/brand/battlereef-full-original.webp') left center / contain no-repeat;
+  display: flex;
+  align-items: center;
+  background: transparent;
 }
-.brand-legacy img { opacity: 0; }
-.hero-visual { isolation: isolate; }
+.brand-legacy img {
+  opacity: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: left center;
+  filter: drop-shadow(0 0 18px rgba(53,185,234,.10));
+}
+
+.hero-visual {
+  isolation: isolate;
+}
+
 .hero-visual::before {
   content: '';
   position: absolute;
-  width: min(560px, 92%);
-  aspect-ratio: 700 / 406;
+  width: min(570px, 94%);
+  aspect-ratio: 1 / 1;
   right: -1%;
   top: 50%;
   transform: translateY(-50%);
   z-index: 0;
-  background: url('/brand/battlereef-full-original.webp') center / contain no-repeat;
-  opacity: .32;
-  filter: saturate(1.12) drop-shadow(0 0 38px rgba(25,132,219,.22));
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(29,126,207,.18), rgba(7,29,50,.02) 58%, transparent 72%);
+  box-shadow: inset 0 0 0 1px rgba(69,172,229,.06);
   pointer-events: none;
 }
-.hero-visual .orbital, .hero-visual .visual-card { z-index: 2; }
-.hero-mark-original { display: none; }
+
+.hero-mark-original {
+  display: block;
+  position: relative;
+  z-index: 1;
+  width: min(430px, 78%);
+  opacity: .58;
+  filter: drop-shadow(0 0 38px rgba(25,132,219,.24));
+}
+
+.hero-visual .orbital,
+.hero-visual .visual-card {
+  z-index: 2;
+}
+
+/* Keep original supplied raster treatment as a lower-opacity enhancement where supported. */
+.brand-art::before,
+.legacy-ribbon::before {
+  background-image: url('/brand/battlereef-full-original.webp');
+}
+
 @media (max-width: 900px) {
   .brand-legacy { width: 180px; }
-  .hero-visual::before { width: 95%; opacity: .26; }
+  .hero-mark-original { width: min(370px, 80%); opacity: .54; }
 }
+
 @media (max-width: 560px) {
   .brand-legacy { width: 155px; height: 46px; }
-  .hero-visual::before { width: 110%; right: -8%; opacity: .22; }
+  .hero-mark-original { width: min(300px, 86%); opacity: .50; }
 }
