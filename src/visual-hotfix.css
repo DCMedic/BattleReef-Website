@@ -1,0 +1,47 @@
+/* Makes the supplied original BattleReef artwork visibly present above the fold. */
+.brand-original img {
+  width: 210px;
+  height: 54px;
+  object-fit: contain;
+  object-position: left center;
+  filter: saturate(1.08) drop-shadow(0 6px 18px rgba(0,0,0,.22));
+}
+
+.hero-logo-original {
+  position: absolute;
+  width: min(560px, 92%);
+  right: -1%;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 0;
+  opacity: .32;
+  filter: saturate(1.12) drop-shadow(0 0 38px rgba(25,132,219,.22));
+  pointer-events: none;
+}
+
+.hero-visual .orbital,
+.hero-visual .visual-card {
+  z-index: 2;
+}
+
+.hero-visual .hero-mark-original {
+  display: none;
+}
+
+.brand-story .brand-art::before {
+  opacity: 1;
+}
+
+.legacy-ribbon::before {
+  opacity: 1;
+}
+
+@media (max-width: 900px) {
+  .brand-original img { width: 180px; }
+  .hero-logo-original { width: 95%; opacity: .26; }
+}
+
+@media (max-width: 560px) {
+  .brand-original img { width: 155px; height: 46px; }
+  .hero-logo-original { width: 110%; right: -8%; opacity: .22; }
+}
