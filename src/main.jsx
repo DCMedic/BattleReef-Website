@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import { SitePage } from './SitePages.jsx'
-import AuthorityEnhancements from './AuthorityEnhancements.jsx'
+import AuthorityPortal from './AuthorityPortal.jsx'
 import './production-hardening.js'
 import './styles.css'
 import './expansion.css'
@@ -36,7 +36,7 @@ function HomeNavigationUpgrade() {
 }
 
 function EnhancedSitePage({ path }) {
-  return <><SitePage path={path}/><AuthorityEnhancements path={path}/></>
+  return <><SitePage path={path}/><AuthorityPortal path={path}/></>
 }
 
 const rawPath = window.location.pathname.replace(/\/+$/, '') || '/'
