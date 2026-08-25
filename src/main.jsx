@@ -5,6 +5,7 @@ import './styles.css'
 import './expansion.css'
 import './brand-refinement.css'
 import './visual-hotfix.css'
+import './header-original.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
