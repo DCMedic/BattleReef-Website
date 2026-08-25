@@ -1,0 +1,110 @@
+/* Root-cause fix for BattleReef branding.
+   These selectors intentionally load cache-busted SVG wrappers that embed
+   the user's original BattleReef artwork. They override the older derived
+   SVG and stale WebP enhancement layers without depending on same-path cache replacement. */
+
+.brand-legacy {
+  width: 230px;
+  height: 64px;
+  display: block;
+  position: relative;
+  background: url('/brand/battlereef-wordmark-original-v2.svg') left center / contain no-repeat;
+}
+.brand-legacy img {
+  visibility: hidden;
+}
+
+.hero-visual {
+  isolation: isolate;
+}
+.hero-mark-original {
+  visibility: hidden;
+}
+.hero-visual::before {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  width: min(470px, 82%);
+  aspect-ratio: 220 / 171;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: url('/brand/battlereef-mark-original-v2.svg') center / contain no-repeat;
+  opacity: .72;
+  filter: drop-shadow(0 0 42px rgba(32, 135, 232, .28));
+  pointer-events: none;
+}
+.hero-visual .orbital,
+.hero-visual .visual-card {
+  position: absolute;
+  z-index: 2;
+}
+
+/* Use the actual supplied wordmark as the main artwork in the brand-story panel. */
+.brand-art::before {
+  content: '';
+  width: 92%;
+  height: 82%;
+  display: block;
+  background: url('/brand/battlereef-wordmark-original-v2.svg') center / contain no-repeat;
+  opacity: 1;
+  filter: drop-shadow(0 18px 36px rgba(0,0,0,.30));
+}
+.brand-art > img {
+  display: none;
+}
+
+/* Use the supplied emblem in the mission panel. */
+.mission-mark img {
+  visibility: hidden;
+}
+.mission-mark::before {
+  content: '';
+  position: absolute;
+  inset: 7%;
+  z-index: 1;
+  background: url('/brand/battlereef-mark-original-v2.svg') center / contain no-repeat;
+  filter: drop-shadow(0 0 38px rgba(32,135,232,.20));
+}
+
+/* Use the original wordmark prominently in the ribbon. */
+.legacy-ribbon::before {
+  content: '';
+  width: 100%;
+  min-height: 122px;
+  background: url('/brand/battlereef-wordmark-original-v2.svg') left center / contain no-repeat;
+  filter: drop-shadow(0 12px 30px rgba(0,0,0,.22));
+  opacity: 1;
+}
+.legacy-ribbon > img {
+  display: none;
+}
+
+/* Footer uses the original supplied wordmark rather than the derived approximation. */
+.footer-brand img {
+  visibility: hidden;
+}
+.footer-brand {
+  position: relative;
+}
+.footer-brand::before {
+  content: '';
+  display: block;
+  width: 230px;
+  height: 72px;
+  margin-bottom: 8px;
+  background: url('/brand/battlereef-wordmark-original-v2.svg') left center / contain no-repeat;
+}
+
+@media (max-width: 900px) {
+  .brand-legacy { width: 200px; height: 58px; }
+  .hero-visual::before { width: min(390px, 82%); opacity: .70; }
+  .brand-art::before { width: 94%; height: 84%; }
+}
+
+@media (max-width: 560px) {
+  .brand-legacy { width: 165px; height: 48px; }
+  .hero-visual::before { width: min(310px, 86%); opacity: .66; }
+  .footer-brand::before { width: 190px; height: 60px; }
+  .legacy-ribbon::before { min-height: 92px; background-position: center; }
+}
