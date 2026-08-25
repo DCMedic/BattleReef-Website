@@ -1,8 +1,4 @@
-/portfolio /#platform 301
-/portfolio/ /#platform 301
-/services /#engineering 301
-/services/ /#engineering 301
-/about /#research 301
-/about/ /#research 301
-/contact /#collaborate 301
-/contact/ /#collaborate 301
+/portfolio /brmc 301
+/portfolio/ /brmc 301
+/services /marine-automation 301
+/services/ /marine-automation 301
