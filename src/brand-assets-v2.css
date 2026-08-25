@@ -1,7 +1,4 @@
-/* Root-cause fix for BattleReef branding.
-   These selectors intentionally load cache-busted SVG wrappers that embed
-   the user's original BattleReef artwork. They override the older derived
-   SVG and stale WebP enhancement layers without depending on same-path cache replacement. */
+/* Root-cause brand asset layer plus contrast tuning for the dark site theme. */
 
 .brand-legacy {
   width: 230px;
@@ -9,6 +6,8 @@
   display: block;
   position: relative;
   background: url('/brand/battlereef-wordmark-original-v2.svg') left center / contain no-repeat;
+  filter: brightness(1.65) contrast(1.08) saturate(1.35)
+    drop-shadow(0 0 16px rgba(64, 187, 255, .24));
 }
 .brand-legacy img {
   visibility: hidden;
@@ -30,8 +29,26 @@
   top: 50%;
   transform: translate(-50%, -50%);
   background: url('/brand/battlereef-mark-original-v2.svg') center / contain no-repeat;
-  opacity: .72;
-  filter: drop-shadow(0 0 42px rgba(32, 135, 232, .28));
+  opacity: .94;
+  filter: brightness(1.48) contrast(1.10) saturate(1.40)
+    drop-shadow(0 0 34px rgba(54, 178, 255, .34))
+    drop-shadow(0 0 72px rgba(35, 112, 220, .18));
+  pointer-events: none;
+}
+.hero-visual::after {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  width: min(520px, 90%);
+  aspect-ratio: 1 / 1;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(circle,
+    rgba(34, 143, 226, .22) 0%,
+    rgba(20, 85, 154, .12) 38%,
+    rgba(4, 20, 37, 0) 72%);
   pointer-events: none;
 }
 .hero-visual .orbital,
@@ -40,7 +57,12 @@
   z-index: 2;
 }
 
-/* Use the actual supplied wordmark as the main artwork in the brand-story panel. */
+/* Main About-page artwork. */
+.brand-art {
+  background:
+    radial-gradient(circle at 52% 48%, rgba(36, 145, 226, .24), transparent 54%),
+    linear-gradient(145deg, rgba(8,34,60,.94), rgba(4,18,34,.98));
+}
 .brand-art::before {
   content: '';
   width: 92%;
@@ -48,13 +70,15 @@
   display: block;
   background: url('/brand/battlereef-wordmark-original-v2.svg') center / contain no-repeat;
   opacity: 1;
-  filter: drop-shadow(0 18px 36px rgba(0,0,0,.30));
+  filter: brightness(1.58) contrast(1.10) saturate(1.40)
+    drop-shadow(0 16px 30px rgba(0,0,0,.26))
+    drop-shadow(0 0 30px rgba(52, 177, 255, .20));
 }
 .brand-art > img {
   display: none;
 }
 
-/* Use the supplied emblem in the mission panel. */
+/* Mission emblem. */
 .mission-mark img {
   visibility: hidden;
 }
@@ -64,23 +88,26 @@
   inset: 7%;
   z-index: 1;
   background: url('/brand/battlereef-mark-original-v2.svg') center / contain no-repeat;
-  filter: drop-shadow(0 0 38px rgba(32,135,232,.20));
+  filter: brightness(1.52) contrast(1.08) saturate(1.38)
+    drop-shadow(0 0 40px rgba(52,177,255,.28));
 }
 
-/* Use the original wordmark prominently in the ribbon. */
+/* Brand ribbon. */
 .legacy-ribbon::before {
   content: '';
   width: 100%;
   min-height: 122px;
   background: url('/brand/battlereef-wordmark-original-v2.svg') left center / contain no-repeat;
-  filter: drop-shadow(0 12px 30px rgba(0,0,0,.22));
+  filter: brightness(1.55) contrast(1.08) saturate(1.38)
+    drop-shadow(0 12px 30px rgba(0,0,0,.20))
+    drop-shadow(0 0 26px rgba(52,177,255,.18));
   opacity: 1;
 }
 .legacy-ribbon > img {
   display: none;
 }
 
-/* Footer uses the original supplied wordmark rather than the derived approximation. */
+/* Footer wordmark. */
 .footer-brand img {
   visibility: hidden;
 }
@@ -94,17 +121,21 @@
   height: 72px;
   margin-bottom: 8px;
   background: url('/brand/battlereef-wordmark-original-v2.svg') left center / contain no-repeat;
+  filter: brightness(1.55) contrast(1.08) saturate(1.35)
+    drop-shadow(0 0 18px rgba(52,177,255,.18));
 }
 
 @media (max-width: 900px) {
   .brand-legacy { width: 200px; height: 58px; }
-  .hero-visual::before { width: min(390px, 82%); opacity: .70; }
+  .hero-visual::before { width: min(390px, 82%); opacity: .92; }
+  .hero-visual::after { width: min(430px, 90%); }
   .brand-art::before { width: 94%; height: 84%; }
 }
 
 @media (max-width: 560px) {
   .brand-legacy { width: 165px; height: 48px; }
-  .hero-visual::before { width: min(310px, 86%); opacity: .66; }
+  .hero-visual::before { width: min(310px, 86%); opacity: .90; }
+  .hero-visual::after { width: min(350px, 94%); }
   .footer-brand::before { width: 190px; height: 60px; }
   .legacy-ribbon::before { min-height: 92px; background-position: center; }
 }
