@@ -1,0 +1,297 @@
+/* Visual-brand refinement: uses the original BattleReef artwork supplied for the redesign. */
+
+:root {
+  --brand-deep: #031020;
+  --brand-navy: #071d39;
+  --brand-blue: #176fd0;
+  --brand-cyan: #35b9ea;
+  --brand-line: rgba(81, 183, 238, .22);
+}
+
+.site-header {
+  background: linear-gradient(180deg, rgba(3,16,32,.92), rgba(3,16,32,.70));
+  border-bottom-color: rgba(64,166,224,.14);
+  box-shadow: 0 1px 0 rgba(35,145,211,.06);
+}
+
+.brand {
+  position: relative;
+}
+
+.brand::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 30%;
+  bottom: -9px;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(53,185,234,.8), transparent);
+  opacity: .55;
+}
+
+.hero {
+  background:
+    radial-gradient(circle at 78% 44%, rgba(25,112,204,.18), transparent 31%),
+    radial-gradient(circle at 61% 72%, rgba(53,185,234,.08), transparent 27%);
+}
+
+.hero-visual {
+  isolation: isolate;
+}
+
+.hero-visual::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  width: min(610px, 105%);
+  aspect-ratio: 700 / 406;
+  right: -1%;
+  bottom: 1%;
+  background: url('/brand/battlereef-full-original.webp') center / contain no-repeat;
+  opacity: .16;
+  filter: saturate(1.15) drop-shadow(0 0 44px rgba(32,135,232,.18));
+  pointer-events: none;
+}
+
+.hero-mark {
+  opacity: .30;
+  filter: drop-shadow(0 0 46px rgba(19,132,219,.21));
+}
+
+.signal-bar {
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(90deg, rgba(8,26,45,.88), rgba(10,36,62,.78), rgba(8,26,45,.88));
+}
+
+.signal-bar::after {
+  content: '';
+  position: absolute;
+  inset: auto -8% -48px;
+  height: 80px;
+  border-top: 1px solid rgba(53,185,234,.13);
+  border-radius: 50% 50% 0 0;
+  transform: rotate(-1.5deg);
+  pointer-events: none;
+}
+
+.brand-story {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 82% 47%, rgba(27,123,207,.13), transparent 35%),
+    linear-gradient(135deg, #061525, #04111f 72%);
+}
+
+.brand-story::before {
+  content: 'BATTLEREEF';
+  position: absolute;
+  right: -1.5%;
+  top: 8%;
+  font: 700 clamp(76px, 11vw, 180px)/1 var(--mono);
+  letter-spacing: -.06em;
+  color: rgba(66,157,220,.025);
+  pointer-events: none;
+}
+
+.brand-art {
+  min-height: 390px;
+  position: relative;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid rgba(81,183,238,.18);
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at 42% 42%, rgba(43,149,218,.18), transparent 38%),
+    linear-gradient(145deg, rgba(8,34,60,.88), rgba(4,18,34,.92));
+  box-shadow: inset 0 0 80px rgba(19,89,150,.08), 0 30px 80px rgba(0,0,0,.20);
+}
+
+.brand-art::before {
+  content: '';
+  width: 94%;
+  height: 86%;
+  background: url('/brand/battlereef-full-original.webp') center / contain no-repeat;
+  filter: saturate(1.10) drop-shadow(0 18px 34px rgba(0,0,0,.28));
+  opacity: .96;
+}
+
+.brand-art::after {
+  content: '';
+  position: absolute;
+  inset: 9%;
+  border: 1px solid rgba(79,181,232,.09);
+  border-radius: 50%;
+  transform: scale(1.20);
+  pointer-events: none;
+}
+
+.brand-art > img {
+  display: none;
+}
+
+.capability-card,
+.application-card,
+.architecture-card,
+.oss-card {
+  transition: transform .22s ease, border-color .22s ease, background .22s ease, box-shadow .22s ease;
+}
+
+.capability-card:hover,
+.application-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(74,178,231,.28);
+  box-shadow: 0 18px 45px rgba(0,0,0,.15);
+}
+
+.platform {
+  position: relative;
+  overflow: hidden;
+}
+
+.platform::after {
+  content: '';
+  position: absolute;
+  width: 480px;
+  height: 480px;
+  right: -170px;
+  top: -130px;
+  border: 1px solid rgba(51,162,224,.08);
+  border-radius: 50%;
+  box-shadow: 0 0 0 70px rgba(51,162,224,.025), 0 0 0 140px rgba(51,162,224,.015);
+  pointer-events: none;
+}
+
+.mission {
+  background:
+    linear-gradient(120deg, rgba(4,17,31,.96), rgba(7,29,51,.94)),
+    radial-gradient(circle at 18% 50%, rgba(33,135,216,.16), transparent 30%);
+}
+
+.mission-mark {
+  position: relative;
+}
+
+.mission-mark::after {
+  content: '';
+  position: absolute;
+  inset: 12%;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px rgba(70,178,232,.10), 0 0 70px rgba(31,128,206,.18);
+  pointer-events: none;
+}
+
+.legacy-ribbon {
+  min-height: 180px;
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(240px, 520px) 1fr;
+  gap: 48px;
+  align-items: center;
+  padding: 34px max(6vw, 28px);
+  overflow: hidden;
+  border-block: 1px solid rgba(81,183,238,.13);
+  background:
+    linear-gradient(90deg, rgba(5,20,36,.98), rgba(7,31,55,.92), rgba(5,20,36,.98));
+}
+
+.legacy-ribbon::before {
+  content: '';
+  width: 100%;
+  min-height: 122px;
+  background: url('/brand/battlereef-full-original.webp') left center / contain no-repeat;
+  filter: saturate(1.08) drop-shadow(0 12px 30px rgba(0,0,0,.22));
+}
+
+.legacy-ribbon::after {
+  content: '';
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  right: -130px;
+  top: -190px;
+  border-radius: 50%;
+  border: 1px solid rgba(53,185,234,.07);
+  pointer-events: none;
+}
+
+.legacy-ribbon > img {
+  display: none;
+}
+
+.legacy-ribbon p {
+  margin: 0;
+  max-width: 620px;
+  color: #8da8bd;
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+.contact {
+  background:
+    radial-gradient(circle at 86% 45%, rgba(51,174,232,.11), transparent 29%),
+    linear-gradient(130deg, #08213a, #071629 62%, #04101e);
+}
+
+footer {
+  border-top-color: rgba(65,168,226,.13);
+}
+
+@media (max-width: 900px) {
+  .hero-visual::after {
+    width: 105%;
+    right: -4%;
+    bottom: 4%;
+    opacity: .13;
+  }
+
+  .brand-art {
+    min-height: 310px;
+  }
+
+  .legacy-ribbon {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding-block: 30px;
+  }
+
+  .legacy-ribbon::before {
+    min-height: 100px;
+    background-position: center;
+  }
+
+  .legacy-ribbon p {
+    text-align: center;
+    margin-inline: auto;
+  }
+}
+
+@media (max-width: 560px) {
+  .hero-visual::after {
+    width: 118%;
+    right: -9%;
+    opacity: .11;
+  }
+
+  .brand-story::before {
+    display: none;
+  }
+
+  .brand-art {
+    min-height: 230px;
+    border-radius: 12px;
+  }
+
+  .legacy-ribbon::before {
+    min-height: 82px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .capability-card:hover,
+  .application-card:hover {
+    transform: none;
+  }
+}
