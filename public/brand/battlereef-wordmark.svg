@@ -1,0 +1,14 @@
+<svg width="780" height="180" viewBox="0 0 780 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="wave" x1="20" y1="15" x2="180" y2="170" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#39C7ED"/><stop offset=".58" stop-color="#1C8CE0"/><stop offset="1" stop-color="#164991"/>
+    </linearGradient>
+    <linearGradient id="word" x1="190" y1="65" x2="750" y2="125" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#DDF5FF"/><stop offset=".5" stop-color="#6BCDF0"/><stop offset="1" stop-color="#2A86E2"/>
+    </linearGradient>
+  </defs>
+  <circle cx="88" cy="88" r="68" stroke="url(#wave)" stroke-width="8"/>
+  <path d="M31 99C38 63 66 46 94 48C61 58 49 81 57 101C67 126 95 136 119 126C140 118 152 102 166 94C151 126 118 145 82 138C45 131 26 108 31 99Z" fill="url(#wave)"/>
+  <path d="M72 49H109C132 49 146 61 146 79C146 94 137 102 125 106C142 109 152 120 152 136C152 158 136 169 110 169H60L78 148H108C119 148 124 143 124 136C124 128 118 124 107 124H73L88 105H108C117 105 122 101 122 94C122 87 117 83 108 83H89L72 49Z" fill="#06172D"/>
+  <text x="166" y="123" fill="url(#word)" font-family="Arial, Helvetica, sans-serif" font-size="70" font-style="italic" font-weight="700" letter-spacing="-4">BattleReef</text>
+</svg>
