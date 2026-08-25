@@ -1,0 +1,10 @@
+/* Use the supplied original logo treatment in the header without changing layout. */
+.brand-legacy {
+  width: 210px;
+  height: 56px;
+  background: url('/brand/battlereef-full-original.webp') left center / contain no-repeat;
+}
+.brand-legacy img { opacity: 0; }
+@media (max-width: 560px) {
+  .brand-legacy { width: 165px; height: 48px; }
+}
