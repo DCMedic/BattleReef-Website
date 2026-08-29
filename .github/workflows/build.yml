@@ -19,20 +19,13 @@ jobs:
     timeout-minutes: 12
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7.0.1
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6.4.0
         with:
           node-version: 22.14.0
-
-      - name: Generate dependency lockfile
-        if: hashFiles('package-lock.json') == ''
-        run: |
-          npm install --package-lock-only --ignore-scripts --no-audit --no-fund
-          echo '===PACKAGE_LOCK_BEGIN==='
-          cat package-lock.json
-          echo '===PACKAGE_LOCK_END==='
+          cache: npm
 
       - name: Install exact dependencies
         run: npm ci --ignore-scripts --no-audit --no-fund
