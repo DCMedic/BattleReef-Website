@@ -1,0 +1,7 @@
+* @DCMedic
+/.github/ @DCMedic
+/src/ @DCMedic
+/public/ @DCMedic
+/package.json @DCMedic
+/package-lock.json @DCMedic
+/wrangler.jsonc @DCMedic
