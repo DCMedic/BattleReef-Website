@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import {
   Activity, ArrowLeft, ArrowRight, Blocks, Bot, Building2, Database,
   FlaskConical, Github, LockKeyhole, Menu, Network, Radio, ShieldCheck,
@@ -90,26 +90,6 @@ const pageData = {
   }
 }
 
-function useSeo(path, page) {
-  useEffect(() => {
-    const canonical = `https://battlereef.com${path}`
-    document.title = `${page.title} | BattleReef`
-    const setMeta = (selector, attr, value) => {
-      let el = document.head.querySelector(selector)
-      if (!el) { el = document.createElement('meta'); document.head.appendChild(el) }
-      el.setAttribute(attr, value)
-      return el
-    }
-    setMeta('meta[name="description"]','name','description').setAttribute('content', page.dek)
-    setMeta('meta[property="og:title"]','property','og:title').setAttribute('content', `${page.title} | BattleReef`)
-    setMeta('meta[property="og:description"]','property','og:description').setAttribute('content', page.dek)
-    setMeta('meta[property="og:url"]','property','og:url').setAttribute('content', canonical)
-    let link = document.head.querySelector('link[rel="canonical"]')
-    if (!link) { link = document.createElement('link'); link.rel = 'canonical'; document.head.appendChild(link) }
-    link.href = canonical
-  }, [path, page])
-}
-
 function PageHeader({ menuOpen, setMenuOpen }) {
   return <header className="site-header page-site-header">
     <a className="brand brand-legacy" href="/" aria-label="BattleReef home"><img src="/brand/battlereef-wordmark.svg" alt="BattleReef" /></a>
@@ -123,7 +103,6 @@ function PageHeader({ menuOpen, setMenuOpen }) {
 export function SitePage({ path }) {
   const page = pageData[path]
   const [menuOpen, setMenuOpen] = useState(false)
-  useSeo(path, page || pageData['/about'])
   if (!page) return <NotFound />
   const Icon = page.icon
   return <div className="site-shell detail-page">
