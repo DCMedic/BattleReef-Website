@@ -32,6 +32,22 @@ if (!redirects.includes('/portfolio /brmc 301')) fail('portfolio redirect missin
 if (!redirects.includes('/services /marine-automation 301')) fail('services redirect missing')
 if (!headers.includes('Content-Security-Policy:')) fail('Content-Security-Policy missing')
 if (!headers.includes('Strict-Transport-Security:')) fail('HSTS missing')
+if (!headers.includes('/brand/*\n  Cache-Control: public, max-age=31536000, immutable')) fail('immutable brand caching missing')
+
+const builtHome = fs.readFileSync(path.join(dist, 'index.html'), 'utf8')
+if (!builtHome.includes('rel="preload" as="image"')) fail('critical brand image preload missing')
+if (builtHome.includes('fonts.googleapis.com')) fail('render-blocking external font request remains')
+
+for (const asset of [
+  'battlereef-mark-320.webp',
+  'battlereef-mark-640.webp',
+  'battlereef-mark-1024.webp',
+  'battlereef-wordmark-480.webp',
+  'battlereef-wordmark-960.webp',
+  'battlereef-wordmark-1600.webp',
+]) {
+  if (!fs.existsSync(path.join(dist, 'brand', asset))) fail(`optimized brand asset missing: ${asset}`)
+}
 
 const brandAssetModule = path.join(root, 'src', 'brandAssets.js')
 if (fs.existsSync(brandAssetModule)) fail('obsolete src/brandAssets.js is still present')

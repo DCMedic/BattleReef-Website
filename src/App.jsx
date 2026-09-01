@@ -17,6 +17,7 @@ import {
   Waves,
   X,
 } from 'lucide-react'
+import BrandLogo from './BrandLogo.jsx'
 
 const capabilities = [
   { icon: Activity, title: 'Marine Automation', text: 'Continuous sensing, equipment control, scheduling, alerting, and operational workflows designed around living aquatic systems.' },
@@ -58,18 +59,18 @@ function App() {
     <div className="site-shell">
       <header className="site-header">
         <a className="brand brand-legacy" href="#top" aria-label="BattleReef home">
-          <img src="/brand/battlereef-wordmark.svg" alt="BattleReef" />
+          <BrandLogo priority sizes="(max-width: 760px) 155px, 210px" />
         </a>
         <button className="menu-button" type="button" aria-label="Toggle navigation" aria-expanded={menuOpen} onClick={() => setMenuOpen((open) => !open)}>
           {menuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
         <nav className={menuOpen ? 'nav nav-open' : 'nav'} aria-label="Primary navigation">
-          <a href="#platform" onClick={() => setMenuOpen(false)}>Platform</a>
-          <a href="#engineering" onClick={() => setMenuOpen(false)}>Engineering</a>
-          <a href="#applications" onClick={() => setMenuOpen(false)}>Applications</a>
-          <a href="#research" onClick={() => setMenuOpen(false)}>Research</a>
-          <a href="#about" onClick={() => setMenuOpen(false)}>About</a>
-          <a className="nav-cta" href="#contact" onClick={() => setMenuOpen(false)}>Collaborate</a>
+          <a href="/brmc" onClick={() => setMenuOpen(false)}>Platform</a>
+          <a href="/marine-automation" onClick={() => setMenuOpen(false)}>Engineering</a>
+          <a href="/marine-automation" onClick={() => setMenuOpen(false)}>Applications</a>
+          <a href="/research" onClick={() => setMenuOpen(false)}>Research</a>
+          <a href="/about" onClick={() => setMenuOpen(false)}>About</a>
+          <a className="nav-cta" href="/contact" onClick={() => setMenuOpen(false)}>Collaborate</a>
         </nav>
       </header>
 
@@ -81,7 +82,7 @@ function App() {
             <h1>Intelligent infrastructure for the <em>living ocean.</em></h1>
             <p className="hero-lede">BattleReef develops secure marine automation, telemetry, and cyber-physical systems for aquariums, aquaculture, research, and demanding aquatic operations.</p>
             <div className="hero-actions">
-              <a className="button button-primary" href="#platform">Explore the platform <ArrowRight size={17} /></a>
+              <a className="button button-primary" href="/brmc">Explore the platform <ArrowRight size={17} /></a>
               <a className="button button-ghost" href="https://github.com/DCMedic/BattleReef-Marine-Controller" target="_blank" rel="noreferrer"><Github size={17} /> View on GitHub</a>
             </div>
             <div className="hero-proof" aria-label="BattleReef engineering principles">
@@ -92,7 +93,7 @@ function App() {
             <div className="orbital orbital-a" /><div className="orbital orbital-b" />
             <div className="visual-card telemetry-card"><div className="card-topline"><span>LIVE SYSTEM</span><span className="status-dot">ONLINE</span></div><div className="reading"><span>78.2</span><small>°F</small></div><div className="sparkline"><i /><i /><i /><i /><i /><i /><i /><i /><i /><i /><i /><i /></div><div className="telemetry-row"><span>Temperature</span><strong>Stable</strong></div></div>
             <div className="visual-card node-card"><Radio size={18} /><div><span>EDGE NODE</span><strong>BR-NODE-01</strong></div><span className="pulse" /></div>
-            <img className="hero-mark hero-mark-original" src="/brand/battlereef-mark.svg" alt="" />
+            <BrandLogo className="hero-mark" variant="mark" decorative priority />
           </div>
         </section>
 
@@ -107,7 +108,7 @@ function App() {
               <p>Our direction is toward secure, observable, open marine infrastructure that can support advanced aquaria, public institutions, aquaculture, and research without locking operators into opaque automation stacks.</p>
               <div className="home-section-nav"><a href="#platform">BRMC</a><a href="#engineering">Architecture</a><a href="#research">R&D</a><a href="#open-source">Open Source</a></div>
             </div>
-            <div className="brand-art"><img src="/brand/battlereef-wordmark.svg" alt="BattleReef wave and wordmark design" /></div>
+            <div className="brand-art"><BrandLogo sizes="(max-width: 900px) 90vw, 46vw" /></div>
           </div>
         </section>
 
@@ -136,17 +137,17 @@ function App() {
         <section className="research section-pad" id="research"><div className="research-copy"><p className="eyebrow"><span /> Research & development</p><h2>From automation to marine intelligence.</h2><p>BattleReef is building the data foundation required for the next generation of aquatic operations: systems that can understand trends, recognize abnormal behavior, support human decisions, and eventually adapt to changing environments.</p></div><div className="research-list">{researchAreas.map((area, index) => <div key={area}><span>R{index + 1}</span><p>{area}</p><ArrowRight size={18} /></div>)}</div></section>
 
         <section className="mission section-pad">
-          <div className="mission-grid"><div className="mission-mark"><img src="/brand/battlereef-mark.svg" alt="BattleReef B and wave emblem" /></div><div className="mission-copy"><p className="eyebrow"><span /> Long-term direction</p><h2>Infrastructure for better marine decisions.</h2><p>BattleReef is evolving toward an engineering and research platform where automation is explainable, telemetry is durable, device identity is explicit, and safety-critical state can be challenged by independent evidence.</p><div className="mission-points"><div><strong>Open architecture</strong><span>Interoperable services, documented interfaces, and inspectable engineering decisions.</span></div><div><strong>Operational evidence</strong><span>Telemetry, audit records, device health, and physical verification designed to support real diagnosis.</span></div><div><strong>Research-ready data</strong><span>A time-series foundation suitable for forecasting, anomaly detection, and controlled experimentation.</span></div></div></div></div>
+          <div className="mission-grid"><div className="mission-mark"><BrandLogo variant="mark" sizes="(max-width: 900px) 82vw, 38vw" /></div><div className="mission-copy"><p className="eyebrow"><span /> Long-term direction</p><h2>Infrastructure for better marine decisions.</h2><p>BattleReef is evolving toward an engineering and research platform where automation is explainable, telemetry is durable, device identity is explicit, and safety-critical state can be challenged by independent evidence.</p><div className="mission-points"><div><strong>Open architecture</strong><span>Interoperable services, documented interfaces, and inspectable engineering decisions.</span></div><div><strong>Operational evidence</strong><span>Telemetry, audit records, device health, and physical verification designed to support real diagnosis.</span></div><div><strong>Research-ready data</strong><span>A time-series foundation suitable for forecasting, anomaly detection, and controlled experimentation.</span></div></div></div></div>
         </section>
 
         <section className="open-source section-pad" id="open-source"><div className="oss-card"><Github size={34} /><div><p className="eyebrow"><span /> Open engineering</p><h2>Build in the open. Test the ideas. Improve the system.</h2><p>BattleReef uses open-source development to make architecture inspectable, encourage experimentation, and create a foundation that researchers, aquarists, engineers, and operators can extend.</p></div><a className="button button-primary" href="https://github.com/DCMedic" target="_blank" rel="noreferrer">BattleReef on GitHub <ArrowRight size={17} /></a></div></section>
 
-        <section className="legacy-ribbon"><img src="/brand/battlereef-wordmark.svg" alt="BattleReef brand design" /><p>Original BattleReef visual identity retained as the foundation for the modern engineering brand.</p></section>
+        <section className="legacy-ribbon"><BrandLogo sizes="(max-width: 900px) 90vw, 420px" /><p>Original BattleReef visual identity retained as the foundation for the modern engineering brand.</p></section>
 
         <section className="contact section-pad" id="contact"><div><p className="eyebrow"><span /> Collaboration</p><h2>Have a marine system worth solving?</h2></div><div className="contact-copy"><p>BattleReef is interested in collaboration across public aquariums, aquaculture, marine science, research institutions, advanced hobbyist systems, and ocean technology.</p><a className="button button-light" href="mailto:contact@battlereef.com">Start a conversation <ArrowRight size={17} /></a></div></section>
       </main>
 
-      <footer><div className="footer-brand"><img src="/brand/battlereef-wordmark.svg" alt="BattleReef" /><p>Marine Automation · Cyber-Physical Systems · Research Technology</p></div><div className="footer-links"><a href="#platform">Platform</a><a href="#applications">Applications</a><a href="#research">Research</a><a href="#about">About</a><a href="https://github.com/DCMedic" target="_blank" rel="noreferrer">GitHub</a></div><p className="copyright">© {new Date().getFullYear()} BattleReef, Ltd. All rights reserved.</p></footer>
+      <footer><div className="footer-brand"><BrandLogo sizes="230px" /><p>Marine Automation · Cyber-Physical Systems · Research Technology</p></div><div className="footer-links"><a href="/brmc">Platform</a><a href="/marine-automation">Applications</a><a href="/research">Research</a><a href="/about">About</a><a href="https://github.com/DCMedic" target="_blank" rel="noreferrer">GitHub</a></div><p className="copyright">© {new Date().getFullYear()} BattleReef, Ltd. All rights reserved.</p></footer>
     </div>
   )
 }

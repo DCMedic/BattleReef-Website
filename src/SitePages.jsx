@@ -4,6 +4,7 @@ import {
   FlaskConical, Github, LockKeyhole, Menu, Network, Radio, ShieldCheck,
   Waves, X, Mail, Gauge, Server, Waypoints, ChartNoAxesCombined
 } from 'lucide-react'
+import BrandLogo from './BrandLogo.jsx'
 
 const pageData = {
   '/brmc': {
@@ -92,7 +93,7 @@ const pageData = {
 
 function PageHeader({ menuOpen, setMenuOpen }) {
   return <header className="site-header page-site-header">
-    <a className="brand brand-legacy" href="/" aria-label="BattleReef home"><img src="/brand/battlereef-wordmark.svg" alt="BattleReef" /></a>
+    <a className="brand brand-legacy" href="/" aria-label="BattleReef home"><BrandLogo priority sizes="(max-width: 760px) 155px, 210px" /></a>
     <button className="menu-button" type="button" aria-label="Toggle navigation" aria-expanded={menuOpen} onClick={() => setMenuOpen(v=>!v)}>{menuOpen ? <X size={24}/> : <Menu size={24}/>}</button>
     <nav className={menuOpen ? 'nav nav-open' : 'nav'} aria-label="Primary navigation">
       <a href="/brmc">BRMC</a><a href="/marine-automation">Automation</a><a href="/research">Research</a><a href="/cybersecurity">Cybersecurity</a><a href="/about">About</a><a className="nav-cta" href="/contact">Collaborate</a>
@@ -110,13 +111,13 @@ export function SitePage({ path }) {
     <main>
       <section className="detail-hero section-pad">
         <div className="detail-hero-copy"><a className="back-link" href="/"><ArrowLeft size={16}/> Home</a><p className="eyebrow"><span/>{page.eyebrow}</p><h1>{page.title}</h1><p className="detail-dek">{page.dek}</p>{page.links?.length ? <div className="hero-actions">{page.links.map(([label,url])=><a key={label} className="button button-primary" href={url} target={url.startsWith('http')?'_blank':undefined} rel={url.startsWith('http')?'noreferrer':undefined}>{label}<ArrowRight size={17}/></a>)}</div>:null}</div>
-        <div className="detail-hero-art"><div className="detail-icon-ring"><Icon size={74} strokeWidth={1.15}/></div><img src="/brand/battlereef-mark-original-v2.svg" alt=""/></div>
+        <div className="detail-hero-art"><div className="detail-icon-ring"><Icon size={74} strokeWidth={1.15}/></div><BrandLogo variant="mark" decorative priority sizes="(max-width: 560px) 240px, 480px" /></div>
       </section>
       <section className="detail-callouts section-pad">{page.callouts.map(([k,v],i)=><article key={k}><span>0{i+1}</span><strong>{k}</strong><p>{v}</p></article>)}</section>
       <section className="detail-sections section-pad">{page.sections.map(([heading,text],i)=><article key={heading}><div className="detail-number">{String(i+1).padStart(2,'0')}</div><div><h2>{heading}</h2><p>{text}</p></div></article>)}</section>
       <section className="detail-cta section-pad"><div><p className="eyebrow"><span/>BattleReef</p><h2>Engineering for the living ocean.</h2></div><div><p>Explore the platform, research direction, and open engineering work behind BattleReef.</p><div className="detail-cta-links"><a href="/brmc">BRMC</a><a href="/research">Research</a><a href="/open-source">Open Source</a><a href="/contact">Collaborate</a></div></div></section>
     </main>
-    <footer><div className="footer-brand"><img src="/brand/battlereef-wordmark.svg" alt="BattleReef"/><p>Marine Automation · Cyber-Physical Systems · Research Technology</p></div><div className="footer-links"><a href="/brmc">BRMC</a><a href="/marine-automation">Automation</a><a href="/research">Research</a><a href="/cybersecurity">Security</a><a href="/about">About</a></div><p className="copyright">© {new Date().getFullYear()} BattleReef, Ltd. All rights reserved.</p></footer>
+    <footer><div className="footer-brand"><BrandLogo sizes="230px"/><p>Marine Automation · Cyber-Physical Systems · Research Technology</p></div><div className="footer-links"><a href="/brmc">BRMC</a><a href="/marine-automation">Automation</a><a href="/research">Research</a><a href="/cybersecurity">Security</a><a href="/about">About</a></div><p className="copyright">© {new Date().getFullYear()} BattleReef, Ltd. All rights reserved.</p></footer>
   </div>
 }
 
