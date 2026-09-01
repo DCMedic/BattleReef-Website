@@ -52,4 +52,15 @@ for (const asset of [
 const brandAssetModule = path.join(root, 'src', 'brandAssets.js')
 if (fs.existsSync(brandAssetModule)) fail('obsolete src/brandAssets.js is still present')
 
+const brandCss = fs.readFileSync(path.join(root, 'src', 'brand-system.css'), 'utf8')
+for (const requiredLayer of [
+  '.hero-visual::before',
+  '.hero-mark',
+  '.hero-visual .orbital',
+  '.hero-visual .visual-card',
+]) {
+  if (!brandCss.includes(requiredLayer)) fail(`explicit hero layer missing: ${requiredLayer}`)
+}
+if (!brandCss.includes('backdrop-filter: none')) fail('hero card opacity protection missing')
+
 if (!process.exitCode) console.log('Production verification passed.')
