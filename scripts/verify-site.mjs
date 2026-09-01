@@ -39,18 +39,19 @@ if (!builtHome.includes('rel="preload" as="image"')) fail('critical brand image 
 if (builtHome.includes('fonts.googleapis.com')) fail('render-blocking external font request remains')
 
 for (const asset of [
-  'battlereef-logo-mark-320.webp',
-  'battlereef-logo-mark-640.webp',
-  'battlereef-logo-mark-1024.webp',
-  'battlereef-logo-full-480.webp',
-  'battlereef-logo-full-960.webp',
-  'battlereef-logo-full-1536.webp',
+  'battlereef-logo-mark-v2-320.webp',
+  'battlereef-logo-mark-v2-640.webp',
+  'battlereef-logo-mark-v2-1024.webp',
+  'battlereef-logo-full-v2-480.webp',
+  'battlereef-logo-full-v2-960.webp',
+  'battlereef-logo-full-v2-1407.webp',
 ]) {
   if (!fs.existsSync(path.join(dist, 'brand', asset))) fail(`optimized brand asset missing: ${asset}`)
 }
 
 const brandComponent = fs.readFileSync(path.join(root, 'src', 'BrandLogo.jsx'), 'utf8')
-if (!brandComponent.includes('battlereef-logo-full-960.webp')) fail('canonical circular-wave full logo is not configured')
+if (!brandComponent.includes('battlereef-logo-full-v2-960.webp')) fail('transparent circular-wave full logo is not configured')
+if (brandComponent.includes('battlereef-logo-full-960.webp')) fail('white-fill logo asset is still configured')
 if (brandComponent.includes('battlereef-wordmark-960.webp')) fail('obsolete non-wave wordmark is still configured')
 
 const brandAssetModule = path.join(root, 'src', 'brandAssets.js')
@@ -66,5 +67,6 @@ for (const requiredLayer of [
   if (!brandCss.includes(requiredLayer)) fail(`explicit hero layer missing: ${requiredLayer}`)
 }
 if (!brandCss.includes('backdrop-filter: none')) fail('hero card opacity protection missing')
+if (brandCss.includes('#e7f8ff') || brandCss.includes('#b8e3f5')) fail('light logo-panel treatment is still configured')
 
 if (!process.exitCode) console.log('Production verification passed.')
