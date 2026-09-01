@@ -39,15 +39,19 @@ if (!builtHome.includes('rel="preload" as="image"')) fail('critical brand image 
 if (builtHome.includes('fonts.googleapis.com')) fail('render-blocking external font request remains')
 
 for (const asset of [
-  'battlereef-mark-320.webp',
-  'battlereef-mark-640.webp',
-  'battlereef-mark-1024.webp',
-  'battlereef-wordmark-480.webp',
-  'battlereef-wordmark-960.webp',
-  'battlereef-wordmark-1600.webp',
+  'battlereef-logo-mark-320.webp',
+  'battlereef-logo-mark-640.webp',
+  'battlereef-logo-mark-1024.webp',
+  'battlereef-logo-full-480.webp',
+  'battlereef-logo-full-960.webp',
+  'battlereef-logo-full-1536.webp',
 ]) {
   if (!fs.existsSync(path.join(dist, 'brand', asset))) fail(`optimized brand asset missing: ${asset}`)
 }
+
+const brandComponent = fs.readFileSync(path.join(root, 'src', 'BrandLogo.jsx'), 'utf8')
+if (!brandComponent.includes('battlereef-logo-full-960.webp')) fail('canonical circular-wave full logo is not configured')
+if (brandComponent.includes('battlereef-wordmark-960.webp')) fail('obsolete non-wave wordmark is still configured')
 
 const brandAssetModule = path.join(root, 'src', 'brandAssets.js')
 if (fs.existsSync(brandAssetModule)) fail('obsolete src/brandAssets.js is still present')

@@ -1,15 +1,15 @@
 const assets = {
   mark: {
-    src: '/brand/battlereef-mark-640.webp',
-    srcSet: '/brand/battlereef-mark-320.webp 320w, /brand/battlereef-mark-640.webp 640w, /brand/battlereef-mark-1024.webp 1024w',
+    src: '/brand/battlereef-logo-mark-640.webp',
+    srcSet: '/brand/battlereef-logo-mark-320.webp 320w, /brand/battlereef-logo-mark-640.webp 640w, /brand/battlereef-logo-mark-1024.webp 1024w',
     width: 1024,
     height: 895,
   },
   wordmark: {
-    src: '/brand/battlereef-wordmark-960.webp',
-    srcSet: '/brand/battlereef-wordmark-480.webp 480w, /brand/battlereef-wordmark-960.webp 960w, /brand/battlereef-wordmark-1600.webp 1600w',
-    width: 1600,
-    height: 416,
+    src: '/brand/battlereef-logo-full-960.webp',
+    srcSet: '/brand/battlereef-logo-full-480.webp 480w, /brand/battlereef-logo-full-960.webp 960w, /brand/battlereef-logo-full-1536.webp 1408w',
+    width: 1408,
+    height: 713,
   },
 }
 
