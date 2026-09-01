@@ -1,0 +1,80 @@
+/* Canonical BattleReef logo treatment. Keep brand artwork as real images so the
+   browser can select, prioritize, decode, and expose each asset correctly. */
+.site-header {
+  background: linear-gradient(180deg, rgba(3, 16, 32, .94), rgba(3, 16, 32, .72));
+  border-bottom-color: rgba(64, 166, 224, .14);
+}
+
+.brand-legacy {
+  width: 210px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+}
+
+.brand-legacy img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: left center;
+  filter: brightness(1.12) saturate(1.12) drop-shadow(0 0 16px rgba(53, 185, 234, .16));
+}
+
+.hero-mark {
+  position: relative;
+  z-index: 1;
+  width: min(430px, 78%);
+  height: auto;
+  opacity: .76;
+  filter: brightness(1.1) saturate(1.12) drop-shadow(0 0 38px rgba(25, 132, 219, .28));
+}
+
+.brand-art img {
+  display: block;
+  width: min(94%, 760px);
+  height: auto;
+  position: relative;
+  z-index: 2;
+  filter: brightness(1.08) saturate(1.12) drop-shadow(0 24px 50px rgba(0, 0, 0, .34));
+}
+
+.mission-mark img {
+  display: block;
+  width: min(82%, 540px);
+  height: auto;
+  filter: brightness(1.08) saturate(1.12) drop-shadow(0 25px 60px rgba(0, 0, 0, .32));
+}
+
+.legacy-ribbon img {
+  display: block;
+  width: min(420px, 38vw);
+  height: auto;
+  filter: brightness(1.08) saturate(1.1) drop-shadow(0 12px 26px rgba(0, 0, 0, .24));
+}
+
+.footer-brand img {
+  visibility: visible;
+  width: 230px;
+  height: auto;
+  opacity: .9;
+  filter: brightness(1.08) saturate(1.08);
+}
+
+.detail-hero-art > img {
+  width: min(480px, 88%);
+  height: auto;
+  opacity: .2;
+  filter: brightness(1.35) saturate(1.25) drop-shadow(0 0 50px rgba(45, 169, 232, .25));
+}
+
+@media (max-width: 900px) {
+  .brand-legacy { width: 180px; }
+  .hero-mark { width: min(370px, 80%); }
+  .legacy-ribbon img { width: min(520px, 100%); }
+}
+
+@media (max-width: 560px) {
+  .brand-legacy { width: 155px; height: 46px; }
+  .hero-mark { width: min(300px, 86%); }
+  .footer-brand img { width: 190px; }
+}

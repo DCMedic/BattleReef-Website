@@ -10,6 +10,7 @@
     "dev": "vite",
     "build": "vite build && node scripts/generate-static-routes.mjs",
     "verify": "node scripts/verify-site.mjs",
+    "lighthouse": "npx --yes @lhci/cli@0.15.1 autorun",
     "preview": "vite preview"
   },
   "dependencies": {
