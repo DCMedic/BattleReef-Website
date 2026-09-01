@@ -71,16 +71,18 @@
 .brand-art,
 .mission-mark {
   border-color: rgba(116, 211, 246, .62);
-  background: linear-gradient(145deg, #e7f8ff, #b8e3f5 58%, #82c7e6);
-  box-shadow: inset 0 0 70px rgba(255, 255, 255, .42), 0 28px 70px rgba(0, 0, 0, .28);
+  background:
+    radial-gradient(circle at 48% 44%, rgba(34, 142, 199, .3), transparent 57%),
+    linear-gradient(145deg, #0e3658, #0a2946 58%, #061b30);
+  box-shadow: inset 0 0 70px rgba(51, 173, 226, .1), 0 28px 70px rgba(0, 0, 0, .28);
 }
 
 .brand-art::before,
 .brand-art::after,
 .mission-mark::before,
 .mission-mark::after {
-  opacity: .14;
-  border-color: rgba(5, 53, 96, .32);
+  opacity: .26;
+  border-color: rgba(116, 211, 246, .28);
 }
 
 .brand-art img {
