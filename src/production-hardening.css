@@ -9,6 +9,21 @@
   -webkit-tap-highlight-color: rgba(53, 185, 234, .18);
 }
 
+/* Maintain WCAG AA contrast for small technical labels on dark panels. */
+.card-index,
+.arch-node span,
+.stack-list span,
+.card-topline,
+.node-card span,
+.signal-bar div,
+.hero-proof {
+  color: #8faabe;
+}
+
+.security-label {
+  color: #a8bfd0;
+}
+
 @media (max-width: 760px) {
   .nav a,
   .menu-button,
