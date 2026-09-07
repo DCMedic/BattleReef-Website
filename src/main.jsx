@@ -1,23 +1,35 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
-import { SitePage } from './SitePages.jsx'
-import AuthorityPortal from './AuthorityPortal.jsx'
 import './production-hardening.js'
 import './styles.css'
-import './expansion.css'
-import './pages.css'
-import './production-hardening.css'
-import './authority.css'
 import './brand-system.css'
-
-function EnhancedSitePage({ path }) {
-  return <><SitePage path={path}/><AuthorityPortal path={path}/></>
-}
+import './production-hardening.css'
 
 const rawPath = window.location.pathname.replace(/\/+$/, '') || '/'
-const content = rawPath === '/' ? <App /> : <EnhancedSitePage path={rawPath} />
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>{content}</React.StrictMode>,
-)
+async function renderSite() {
+  let content
+
+  if (rawPath === '/') {
+    content = <App />
+  } else {
+    const [sitePagesModule, authorityModule] = await Promise.all([
+      import('./SitePages.jsx'),
+      import('./AuthorityPortal.jsx'),
+      import('./expansion.css'),
+      import('./pages.css'),
+      import('./authority.css'),
+    ])
+
+    const SitePage = sitePagesModule.SitePage
+    const AuthorityPortal = authorityModule.default
+    content = <><SitePage path={rawPath}/><AuthorityPortal path={rawPath}/></>
+  }
+
+  ReactDOM.createRoot(document.getElementById('root')).render(
+    <React.StrictMode>{content}</React.StrictMode>,
+  )
+}
+
+renderSite()
