@@ -18,6 +18,8 @@ export default function BrandLogo({
   className,
   decorative = false,
   priority = false,
+  loading,
+  fetchPriority,
   sizes,
 }) {
   const asset = assets[variant]
@@ -26,12 +28,12 @@ export default function BrandLogo({
       className={className}
       src={asset.src}
       srcSet={asset.srcSet}
-      sizes={sizes ?? (variant === 'mark' ? '(max-width: 760px) 300px, 430px' : '(max-width: 760px) 190px, 235px')}
+      sizes={sizes ?? (variant === 'mark' ? '(max-width: 760px) 300px, 430px' : '(max-width: 560px) 175px, (max-width: 900px) 180px, 210px')}
       width={asset.width}
       height={asset.height}
       alt={decorative ? '' : 'BattleReef'}
-      loading={priority ? 'eager' : 'lazy'}
-      fetchPriority={priority ? 'high' : 'auto'}
+      loading={loading ?? (priority ? 'eager' : 'lazy')}
+      fetchPriority={fetchPriority ?? (priority ? 'high' : 'auto')}
       decoding="async"
     />
   )
