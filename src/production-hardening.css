@@ -41,7 +41,11 @@
 .mission,
 .open-source,
 .legacy-ribbon,
-.contact {
+.contact,
+.detail-callouts,
+.detail-sections,
+.detail-cta,
+footer {
   content-visibility: auto;
   contain-intrinsic-size: auto 720px;
 }
@@ -62,7 +66,11 @@
   .mission,
   .open-source,
   .legacy-ribbon,
-  .contact {
+  .contact,
+  .detail-callouts,
+  .detail-sections,
+  .detail-cta,
+  footer {
     contain-intrinsic-size: auto 900px;
   }
 }

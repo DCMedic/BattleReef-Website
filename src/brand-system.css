@@ -3,6 +3,8 @@
 .site-header {
   background: linear-gradient(180deg, rgba(5, 31, 55, .97), rgba(5, 27, 49, .91));
   border-bottom-color: rgba(92, 201, 246, .24);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
 }
 
 .brand-legacy {
@@ -22,6 +24,7 @@
 
 .hero-visual {
   isolation: isolate;
+  contain: layout style;
 }
 
 .hero-visual::before {
