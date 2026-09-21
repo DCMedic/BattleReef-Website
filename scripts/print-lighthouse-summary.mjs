@@ -11,16 +11,18 @@ function findJsonFiles(dir) {
   })
 }
 
-const reports = findJsonFiles(root)
-  .map((file) => {
-    try {
-      const data = JSON.parse(fs.readFileSync(file, 'utf8'))
-      return data?.categories && data?.audits ? { file, data } : null
-    } catch {
-      return null
-    }
-  })
-  .filter(Boolean)
+const reportMap = new Map()
+for (const file of findJsonFiles(root)) {
+  try {
+    const data = JSON.parse(fs.readFileSync(file, 'utf8'))
+    if (!data?.categories || !data?.audits) continue
+    const key = `${data.fetchTime ?? ''}|${data.finalUrl ?? data.requestedUrl ?? ''}`
+    if (!reportMap.has(key)) reportMap.set(key, { file, data })
+  } catch {
+    // Ignore non-Lighthouse JSON files.
+  }
+}
+const reports = [...reportMap.values()]
 
 if (!reports.length) {
   console.log('LIGHTHOUSE_SUMMARY no LHR JSON reports found')
