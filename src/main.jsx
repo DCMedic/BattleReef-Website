@@ -1,12 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
-import './production-hardening.js'
 import './styles.css'
 import './brand-system.css'
 import './production-hardening.css'
 
 const rawPath = window.location.pathname.replace(/\/+$/, '') || '/'
+const authorityPaths = new Set(['/brmc', '/research', '/cybersecurity', '/contact'])
 
 async function renderSite() {
   let content
@@ -14,17 +14,25 @@ async function renderSite() {
   if (rawPath === '/') {
     content = <App />
   } else {
-    const [sitePagesModule, authorityModule] = await Promise.all([
+    const [sitePagesModule] = await Promise.all([
       import('./SitePages.jsx'),
-      import('./AuthorityPortal.jsx'),
       import('./expansion.css'),
       import('./pages.css'),
-      import('./authority.css'),
     ])
 
     const SitePage = sitePagesModule.SitePage
-    const AuthorityPortal = authorityModule.default
-    content = <><SitePage path={rawPath}/><AuthorityPortal path={rawPath}/></>
+    let authority = null
+
+    if (authorityPaths.has(rawPath)) {
+      const [authorityModule] = await Promise.all([
+        import('./AuthorityPortal.jsx'),
+        import('./authority.css'),
+      ])
+      const AuthorityPortal = authorityModule.default
+      authority = <AuthorityPortal path={rawPath} />
+    }
+
+    content = <><SitePage path={rawPath}/>{authority}</>
   }
 
   ReactDOM.createRoot(document.getElementById('root')).render(
