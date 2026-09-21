@@ -38,3 +38,22 @@ jobs:
 
       - name: Verify production output
         run: npm run verify
+
+      - name: Measure pull-request Lighthouse performance
+        if: github.event_name == 'pull_request'
+        run: |
+          npm run preview -- --host 127.0.0.1 --port 4173 > /tmp/battlereef-preview.log 2>&1 &
+          PREVIEW_PID=$!
+          trap 'kill $PREVIEW_PID || true' EXIT
+          for attempt in $(seq 1 30); do
+            if curl -fsS http://127.0.0.1:4173/ > /dev/null; then
+              break
+            fi
+            sleep 1
+          done
+          set +e
+          npx --yes @lhci/cli@0.15.1 autorun --config=lighthouserc.pr.json
+          LH_STATUS=$?
+          set -e
+          node scripts/print-lighthouse-summary.mjs .lighthouseci
+          exit $LH_STATUS

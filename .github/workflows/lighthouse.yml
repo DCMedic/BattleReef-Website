@@ -19,4 +19,9 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci --ignore-scripts --no-audit --no-fund
-      - run: npm run lighthouse
+      - name: Run production Lighthouse audit
+        run: npm run lighthouse
+
+      - name: Print production Lighthouse summary
+        if: always()
+        run: node scripts/print-lighthouse-summary.mjs .lighthouseci
