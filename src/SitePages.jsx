@@ -93,7 +93,7 @@ const pageData = {
 
 function PageHeader({ menuOpen, setMenuOpen }) {
   return <header className="site-header page-site-header">
-    <a className="brand brand-legacy" href="/" aria-label="BattleReef home"><BrandLogo priority sizes="(max-width: 760px) 155px, 210px" /></a>
+    <a className="brand brand-legacy" href="/" aria-label="BattleReef home"><BrandLogo loading="eager" fetchPriority="low" sizes="(max-width: 560px) 175px, (max-width: 900px) 180px, 210px" /></a>
     <button className="menu-button" type="button" aria-label="Toggle navigation" aria-expanded={menuOpen} onClick={() => setMenuOpen(v=>!v)}>{menuOpen ? <X size={24}/> : <Menu size={24}/>}</button>
     <nav className={menuOpen ? 'nav nav-open' : 'nav'} aria-label="Primary navigation">
       <a href="/brmc">BRMC</a><a href="/marine-automation">Automation</a><a href="/research">Research</a><a href="/cybersecurity">Cybersecurity</a><a href="/about">About</a><a className="nav-cta" href="/contact">Collaborate</a>
