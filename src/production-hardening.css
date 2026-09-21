@@ -24,11 +24,46 @@
   color: #a8bfd0;
 }
 
+/* Footer metadata is intentionally small, so keep it comfortably above AA. */
+.footer-brand p,
+.footer-links,
+.copyright {
+  color: #7894a7;
+}
+
+/* Defer below-the-fold rendering work without hiding content from the DOM. */
+.brand-story,
+.capabilities,
+.platform,
+.applications,
+.security,
+.research,
+.mission,
+.open-source,
+.legacy-ribbon,
+.contact {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 720px;
+}
+
 @media (max-width: 760px) {
   .nav a,
   .menu-button,
   .button {
     min-height: 44px;
+  }
+
+  .brand-story,
+  .capabilities,
+  .platform,
+  .applications,
+  .security,
+  .research,
+  .mission,
+  .open-source,
+  .legacy-ribbon,
+  .contact {
+    contain-intrinsic-size: auto 900px;
   }
 }
 
