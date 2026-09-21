@@ -1,8 +1,7 @@
 import { useState } from 'react'
 import {
-  Activity, ArrowLeft, ArrowRight, Blocks, Bot, Building2, Database,
-  FlaskConical, Github, LockKeyhole, Menu, Network, Radio, ShieldCheck,
-  Waves, X, Mail, Gauge, Server, Waypoints, ChartNoAxesCombined
+  ArrowLeft, ArrowRight, Bot, Building2, FlaskConical, Github,
+  Menu, ShieldCheck, Waves, X, Mail, Waypoints
 } from 'lucide-react'
 import BrandLogo from './BrandLogo.jsx'
 
