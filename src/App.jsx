@@ -59,7 +59,7 @@ function App() {
     <div className="site-shell">
       <header className="site-header">
         <a className="brand brand-legacy" href="#top" aria-label="BattleReef home">
-          <BrandLogo priority sizes="(max-width: 760px) 155px, 210px" />
+          <BrandLogo loading="eager" fetchPriority="low" sizes="(max-width: 560px) 175px, (max-width: 900px) 180px, 210px" />
         </a>
         <button className="menu-button" type="button" aria-label="Toggle navigation" aria-expanded={menuOpen} onClick={() => setMenuOpen((open) => !open)}>
           {menuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -108,7 +108,7 @@ function App() {
               <p>Our direction is toward secure, observable, open marine infrastructure that can support advanced aquaria, public institutions, aquaculture, and research without locking operators into opaque automation stacks.</p>
               <div className="home-section-nav"><a href="#platform">BRMC</a><a href="#engineering">Architecture</a><a href="#research">R&D</a><a href="#open-source">Open Source</a></div>
             </div>
-            <div className="brand-art"><BrandLogo sizes="(max-width: 900px) 90vw, 46vw" /></div>
+            <div className="brand-art"><BrandLogo sizes="(max-width: 900px) 90vw, (max-width: 1652px) 46vw, 760px" /></div>
           </div>
         </section>
 
@@ -137,7 +137,7 @@ function App() {
         <section className="research section-pad" id="research"><div className="research-copy"><p className="eyebrow"><span /> Research & development</p><h2>From automation to marine intelligence.</h2><p>BattleReef is building the data foundation required for the next generation of aquatic operations: systems that can understand trends, recognize abnormal behavior, support human decisions, and eventually adapt to changing environments.</p></div><div className="research-list">{researchAreas.map((area, index) => <div key={area}><span>R{index + 1}</span><p>{area}</p><ArrowRight size={18} /></div>)}</div></section>
 
         <section className="mission section-pad">
-          <div className="mission-grid"><div className="mission-mark"><BrandLogo variant="mark" sizes="(max-width: 900px) 82vw, 38vw" /></div><div className="mission-copy"><p className="eyebrow"><span /> Long-term direction</p><h2>Infrastructure for better marine decisions.</h2><p>BattleReef is evolving toward an engineering and research platform where automation is explainable, telemetry is durable, device identity is explicit, and safety-critical state can be challenged by independent evidence.</p><div className="mission-points"><div><strong>Open architecture</strong><span>Interoperable services, documented interfaces, and inspectable engineering decisions.</span></div><div><strong>Operational evidence</strong><span>Telemetry, audit records, device health, and physical verification designed to support real diagnosis.</span></div><div><strong>Research-ready data</strong><span>A time-series foundation suitable for forecasting, anomaly detection, and controlled experimentation.</span></div></div></div></div>
+          <div className="mission-grid"><div className="mission-mark"><BrandLogo variant="mark" sizes="(max-width: 900px) 82vw, (max-width: 1422px) 38vw, 540px" /></div><div className="mission-copy"><p className="eyebrow"><span /> Long-term direction</p><h2>Infrastructure for better marine decisions.</h2><p>BattleReef is evolving toward an engineering and research platform where automation is explainable, telemetry is durable, device identity is explicit, and safety-critical state can be challenged by independent evidence.</p><div className="mission-points"><div><strong>Open architecture</strong><span>Interoperable services, documented interfaces, and inspectable engineering decisions.</span></div><div><strong>Operational evidence</strong><span>Telemetry, audit records, device health, and physical verification designed to support real diagnosis.</span></div><div><strong>Research-ready data</strong><span>A time-series foundation suitable for forecasting, anomaly detection, and controlled experimentation.</span></div></div></div></div>
         </section>
 
         <section className="open-source section-pad" id="open-source"><div className="oss-card"><Github size={34} /><div><p className="eyebrow"><span /> Open engineering</p><h2>Build in the open. Test the ideas. Improve the system.</h2><p>BattleReef uses open-source development to make architecture inspectable, encourage experimentation, and create a foundation that researchers, aquarists, engineers, and operators can extend.</p></div><a className="button button-primary" href="https://github.com/DCMedic" target="_blank" rel="noreferrer">BattleReef on GitHub <ArrowRight size={17} /></a></div></section>
