@@ -57,6 +57,16 @@ if (brandComponent.includes('battlereef-wordmark-960.webp')) fail('obsolete non-
 const brandAssetModule = path.join(root, 'src', 'brandAssets.js')
 if (fs.existsSync(brandAssetModule)) fail('obsolete src/brandAssets.js is still present')
 
+const runtimeMetadataModule = path.join(root, 'src', 'production-hardening.js')
+if (fs.existsSync(runtimeMetadataModule)) fail('redundant runtime metadata mutation module is still present')
+
+const mainSource = fs.readFileSync(path.join(root, 'src', 'main.jsx'), 'utf8')
+if (mainSource.includes("production-hardening.js")) fail('runtime metadata mutation is still imported')
+for (const route of ['/brmc', '/research', '/cybersecurity', '/contact']) {
+  if (!mainSource.includes(route)) fail(`authority route split missing for ${route}`)
+}
+if (!mainSource.includes("authorityPaths.has(rawPath)")) fail('authority enhancements are not route-gated')
+
 const brandCss = fs.readFileSync(path.join(root, 'src', 'brand-system.css'), 'utf8')
 for (const requiredLayer of [
   '.hero-visual::before',
