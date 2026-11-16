@@ -1,4 +1,5 @@
-import { ArrowRight, CheckCircle2, Github, Mail, ShieldCheck } from 'lucide-react'
+import Github from './GithubIcon.jsx'
+import { ArrowRight, CheckCircle2, Mail, ShieldCheck } from 'lucide-react'
 
 const content = {
   '/brmc': {

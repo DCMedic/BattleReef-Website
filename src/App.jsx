@@ -1,3 +1,4 @@
+import Github from './GithubIcon.jsx'
 import { useEffect, useState } from 'react'
 import {
   Activity,
@@ -8,7 +9,6 @@ import {
   ChevronRight,
   Database,
   FlaskConical,
-  Github,
   LockKeyhole,
   Menu,
   Network,
