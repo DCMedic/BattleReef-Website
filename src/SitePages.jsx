@@ -1,6 +1,7 @@
+import Github from './GithubIcon.jsx'
 import { useState } from 'react'
 import {
-  ArrowLeft, ArrowRight, Bot, Building2, FlaskConical, Github,
+  ArrowLeft, ArrowRight, Bot, Building2, FlaskConical,
   Menu, ShieldCheck, Waves, X, Mail, Waypoints
 } from 'lucide-react'
 import BrandLogo from './BrandLogo.jsx'
